@@ -55,4 +55,17 @@ window.addEventListener('DOMContentLoaded', () => {
       }, 500);
     }
   })();
+
+  /**
+   * パスワードの表示切り替え
+   */
+  (document.querySelector('.js-password-switch') as HTMLElement).addEventListener('click', () => {
+    const pass = document.querySelector('.js-password') as HTMLInputElement;
+
+    if (pass.type === 'password') {
+      pass.type = 'text';
+    } else {
+      pass.type = 'password';
+    }
+  });
 });
