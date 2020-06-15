@@ -8,7 +8,7 @@
   "scripts": {
     "stylelint": "stylelint --fix \"./src/styles/**/*\"",
     "dev": "NODE_ENV=development webpack-dev-server --config ./webpack.config.js & gulp",
-    "build": "NODE_ENV=production webpack --colors --config ./webpack.config.js && gulp scss"
+    "build": "NODE_ENV=production webpack --colors --config ./webpack.config.js && npm run stylelint && gulp scss"
   },
   "dependencies": {
     "core-js": "^3.6.5",

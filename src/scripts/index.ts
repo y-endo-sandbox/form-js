@@ -68,4 +68,33 @@ window.addEventListener('DOMContentLoaded', () => {
       pass.type = 'password';
     }
   });
+
+  /**
+   * バラけたinputの連続入力
+   */
+  (function inputSplit() {
+    const root = document.querySelector('.js-input-split') as HTMLElement;
+
+    root.addEventListener('keyup', event => {
+      // 矢印の←と→は無視
+      if (event.keyCode === 37 || event.keyCode === 39) return;
+      const target = (event.target as Element).closest('input');
+      if (target === null) return;
+
+      const value = target.value;
+      const next = target.nextElementSibling as HTMLInputElement | null;
+      const prev = target.previousElementSibling as HTMLInputElement | null;
+
+      // backspace
+      if (event.keyCode === 8 && prev) {
+        prev.focus();
+      }
+
+      if (!isNaN(parseInt(value))) {
+        if (next) {
+          next.focus();
+        }
+      }
+    });
+  })();
 });
