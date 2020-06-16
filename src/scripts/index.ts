@@ -75,7 +75,10 @@ window.addEventListener('DOMContentLoaded', () => {
   (function inputSplit() {
     const root = document.querySelector('.js-input-split') as HTMLElement;
 
-    root.addEventListener('keyup', event => {
+    root.addEventListener('keyup', handleKey);
+    root.addEventListener('input', handleKey);
+
+    function handleKey(event) {
       // 矢印の←と→は無視
       if (event.keyCode === 37 || event.keyCode === 39) return;
       const target = (event.target as Element).closest('input');
@@ -95,6 +98,32 @@ window.addEventListener('DOMContentLoaded', () => {
           next.focus();
         }
       }
-    });
+    }
+  })();
+
+  /**
+   * control-type-02
+   */
+  // NOTE: selectをJSで出来ない
+  // (function controlType02() {
+  //   document.querySelectorAll('.control-type-02').forEach(element => {
+  //     element.addEventListener('click', () => {
+  //       const select = element.querySelector('select');
+  //       if (select) select.focus();
+  //     });
+  //   });
+  // })();
+
+  /**
+   * hankaku
+   */
+  (function hankaku() {
+    const input = document.querySelector('.js-input-hankaku') as HTMLInputElement;
+    input.addEventListener('input', exclude);
+    function exclude() {
+      let value = input.value;
+      value = value.replace(/[^A-Z^a-z\d\-]/g, '');
+      input.value = value;
+    }
   })();
 });
