@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', exclude);
     function exclude() {
       let value = input.value;
-      value = value.replace(/[^A-Z^a-z\d\-]/g, '');
+      value = value.replace(/[^A-Z^a-z\d-]/g, '');
       input.value = value;
     }
   })();
