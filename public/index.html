@@ -51,20 +51,13 @@
     </div>
   </div>
   <div>
-    <p>input date</p>
-    <style>
-    input[type='date']::-webkit-calendar-picker-indicator {
-      opacity: 0;
-    }
-    input[type='date']::-webkit-datetime-edit {
-      opacity: 0;
-    }
-    </style>
-    <input type="date">
+    <p>入力中のチェック</p>
+    <p class="err" style="display: none;">全角が含まれています</p>
+    <input type="text" class="js-input-realtime">
   </div>
   <div>
-    <p>半角英数のみの入力受付(入力制限)</p>
-    <input type="text" class="js-input-hankaku">
+    <p>input type="date"</p>
+    <input type="date">
   </div>
 </div>
 </body>

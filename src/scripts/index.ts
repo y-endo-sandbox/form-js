@@ -115,15 +115,22 @@ window.addEventListener('DOMContentLoaded', () => {
   // })();
 
   /**
-   * hankaku
+   * checkRealTime
    */
-  (function hankaku() {
-    const input = document.querySelector('.js-input-hankaku') as HTMLInputElement;
-    input.addEventListener('input', exclude);
-    function exclude() {
-      let value = input.value;
-      value = value.replace(/[^A-Z^a-z\d-]/g, '');
-      input.value = value;
+  (function checkRealTime() {
+    const input = document.querySelector('.js-input-realtime') as HTMLInputElement;
+    const err = document.querySelector('.err') as HTMLElement;
+    input.addEventListener('input', check);
+
+    function check() {
+      const value = input.value;
+      err.style.display = 'none';
+
+      if (value === '') return;
+
+      if (value.match(/[^x00-\x7Eｧ-ﾝﾞﾟ]+/g)) {
+        err.style.display = 'block';
+      }
     }
   })();
 });
