@@ -133,4 +133,27 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
   })();
+
+  /**
+   * 入力した数字を全角から半角に
+   */
+  (function zenHan() {
+    const input = document.querySelector('.js-input-zen-han') as HTMLInputElement;
+
+    input.addEventListener('change', () => {
+      const value = input.value;
+      if (value) {
+        const hankaku = value.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (string) {
+          return String.fromCharCode(string.charCodeAt(0) - 0xfee0);
+        });
+
+        console.log(value, hankaku);
+
+        const reg = new RegExp(/^[0-9]+$/);
+        if (reg.test(hankaku)) {
+          input.value = hankaku;
+        }
+      }
+    });
+  })();
 });
